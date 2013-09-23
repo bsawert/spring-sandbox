@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"	debug="null">
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%5p [%t] (%F:%L) - %m%n"/>
+        </layout>
+    </appender>
+    <appender name="FILE" class="org.apache.log4j.RollingFileAppender">
+        <param name="file" value="${log.dir}/mvc_webapp.log"/>
+        <param name="MaxFileSize" value="100KB"/>
+        <param name="MaxBackupIndex" value="1"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{MM-dd@HH:mm:ss} %-5p (%13F:%L) %3x - %m%n "/>
+        </layout>
+    </appender>
+
+	<logger name="com.sawert.sandbox.spring.mvc">
+		<level value="warn"/>
+		<appender-ref ref="FILE" />
+	</logger>
+
+	<!-- unit and integration tests -->
+	<logger name="org.apache.http">
+		<level value="error"/>
+		<appender-ref ref="stdout" />
+	</logger>
+	<logger name="com.gargoylesoftware.htmlunit">
+		<level value="error"/>
+		<appender-ref ref="stdout" />
+	</logger>
+
+    <root>
+        <priority value="error"/>
+        <appender-ref ref="stdout"/>
+    </root>
+</log4j:configuration>
