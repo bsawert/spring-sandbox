@@ -269,10 +269,17 @@
                     <version>${maven-failsafe-plugin.version}</version>
                 </plugin>
                 <!-- jetty plugin for integration tests -->
+                <!--
                 <plugin>
                     <groupId>org.mortbay.jetty</groupId>
                     <artifactId>maven-jetty-plugin</artifactId>
                     <version>${maven-jetty-plugin.version}</version>
+                </plugin>
+                -->
+                <plugin>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>jetty-maven-plugin</artifactId>
+                    <version>${jetty-maven-plugin.version}</version>
                 </plugin>
                 <!-- jaxb2 plugin for class generation from xsd -->
                 <plugin>
