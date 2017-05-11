@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.gargoylesoftware.htmlunit.WebClient;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +22,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.HttpMethod;
-import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebRequest;
 import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
@@ -72,7 +72,7 @@ public class TestFormControllerIT {
     }
 
     /**
-     * Test method for {@link com.sawert.sandbox.spring.mvc.controller.TestFormController#processTestForm()}.
+     * Test method to process the test form.
      */
     @Test
     public void testProcessTestForm() {
@@ -138,6 +138,6 @@ public class TestFormControllerIT {
         String result = resultDiv.getAttribute("class");
         assertEquals("success", result);
 
-        client.closeAllWindows();
+        client.close();
     }
 }

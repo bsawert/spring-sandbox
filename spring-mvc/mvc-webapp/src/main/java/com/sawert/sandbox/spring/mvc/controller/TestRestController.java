@@ -4,10 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.sawert.sandbox.spring.mvc.model.TestModel;
 import com.sawert.sandbox.spring.mvc.model.TestModels;
@@ -21,7 +18,7 @@ import com.sawert.sandbox.spring.mvc.service.TestModelService;
  * Handles requests to the /test URI
  *
  */
-@Controller
+@RestController
 public class TestRestController {
     private static final Log log = LogFactory.getLog(TestRestController.class);
 
@@ -35,7 +32,10 @@ public class TestRestController {
      * @return test model
      * @throws Exception
      */
-    @RequestMapping(method=RequestMethod.GET, value="/model/{id}")
+    @RequestMapping(
+        method=RequestMethod.GET,
+        value="/model/{id}",
+        produces={ "application/json", "application/xml" })
     public @ResponseBody TestModel getModelById(@PathVariable(value="id") String id) throws Exception {
         if (log.isDebugEnabled()) {
             log.debug("Retrieving test model for id: " + id);
@@ -53,7 +53,10 @@ public class TestRestController {
      * @return test model
      * @throws Exception
      */
-    @RequestMapping(method=RequestMethod.GET, value="/models")
+    @RequestMapping(
+        method=RequestMethod.GET,
+        value="/models",
+        produces={ "application/json", "application/xml" })
     public @ResponseBody TestModels getAllModels() throws Exception {
         if (log.isDebugEnabled()) {
             log.debug("Retrieving all test models");

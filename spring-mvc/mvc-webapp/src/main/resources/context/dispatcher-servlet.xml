@@ -30,10 +30,10 @@
 	    <property name="useJaf" value="false"/>
 	    <property name="defaultContentType" value="application/json" />
 	    <property name="mediaTypes">
-	        <map>
-	            <entry key="json" value="application/json" />
-	            <entry key="xml" value="application/xml" />
-	       </map>
+            <value>
+                json=application/json
+                xml=application/xml
+            </value>
 	    </property>
     </bean>
 
