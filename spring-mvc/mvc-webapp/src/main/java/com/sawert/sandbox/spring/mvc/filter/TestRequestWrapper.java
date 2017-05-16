@@ -70,9 +70,8 @@ public class TestRequestWrapper extends HttpServletRequestWrapper {
     /**
      * @see javax.servlet.ServletRequestWrapper#getParameterMap()
      */
-    @SuppressWarnings("rawtypes")
 	@Override
-    public Map getParameterMap() {
+    public Map<String, String[]> getParameterMap() {
         // Must be immutable per javax.servlet.Servlet.getParameterMap(). 
         return Collections.unmodifiableMap(parameterMap);
     }
@@ -80,13 +79,12 @@ public class TestRequestWrapper extends HttpServletRequestWrapper {
     /**
      * @see javax.servlet.ServletRequestWrapper#getParameterNames()
      */
-    @SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-    public Enumeration getParameterNames() {
-        Set keySet = parameterMap.keySet();
-        Enumeration e = Collections.enumeration(keySet);
+    public Enumeration<String> getParameterNames() {
+        Set<String> keySet = parameterMap.keySet();
+        Enumeration<String> names = Collections.enumeration(keySet);
         
-        return e;
+        return names;
     }
 
     /**
@@ -136,8 +134,7 @@ public class TestRequestWrapper extends HttpServletRequestWrapper {
      * @param value parameter value
      */
     public void setParameter(final String name, final String value) {
-        String[] valArray = new String[1];
-        valArray[0] = value;
+        String[] valArray = { value };
         
         parameterMap.put(name, valArray);
         queryString = null;

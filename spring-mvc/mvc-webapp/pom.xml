@@ -197,13 +197,6 @@
             </testResource>
         </testResources>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                </configuration>
-            </plugin>
-
             <!-- surefire plugin for unit tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
